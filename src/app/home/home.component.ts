@@ -1,5 +1,5 @@
-import { AuthService } from './../services/auth.service';
-import { Component } from '@angular/core';
+import {AuthService} from './../services/auth.service';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'home',
@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) {
+  }
 }

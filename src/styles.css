@@ -1,4 +1,123 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css";
 
-body { padding: 20px; }
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: whitesmoke;
+  color: black;
+  padding: 80px 20px 20px;
+}
+
+.section-info {
+  padding-top: 20px;
+}
+
+
+.makieta-textarea {
+  width: 100%;
+  height: 3em;
+  transition: all 0.3s;
+
+  padding: 0.5em;
+  border: 1px solid #aaaaaa;
+  background-color: white;
+  resize: none;
+}
+
+.task-description {
+  margin-top: 1em;
+  background-color: white;
+  padding: 1em;
+}
+
+.task-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.task-content {
+  padding: 0.5em;
+  height: 150px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  white-space: pre-line;
+}
+
+.makieta-scroll {
+  border-radius: 5px;
+  background: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.makieta-scroll-max {
+  border-radius: 5px;
+  background: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 580px;
+}
+.messanger-content {
+  padding: 0.5em;
+  height: 92%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  white-space: pre-line;
+}
+
+.makieta-number-badge-container {
+  font-weight: bold;
+}
+
+
+.makieta-number-badge {
+  color: white;
+  background-color: green;
+  font-size: 1.6em;
+  padding: 0.1em 0.5em 0.1em 0.5em;
+  border-radius: 0.25em;
+}
+
+.makieta-number-badge-red {
+  color: white;
+  background-color: red;
+  font-size: 1.6em;
+  padding: 0.1em 0.5em 0.1em 0.5em;
+  border-radius: 0.25em;
+}
+
+
+
+
+.makieta-day-late {
+  margin-left: 0.5em;
+  color: green;
+}
+.makieta-day-late-red {
+  margin-left: 0.5em;
+  color: red;
+}
+
+.makieta-label {
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+.makieta-label-big {
+  font-size: 1.2em;
+  margin-top: 1em;
+
+}
+
+.makieta-button {
+  padding: 1px 5px;
+  font-size: 12px;
+  font-weight: bold;
+  color: blue;
+  line-height: 1.5;
+  border-radius: 3px;
+  background-color: transparent;
+}

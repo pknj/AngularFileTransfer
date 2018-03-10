@@ -1,11 +1,9 @@
 import {OrderService} from './services/order.service';
-import {MockBackend} from '@angular/http/testing';
-import {fakeBackendProvider} from './helpers/fake-backend';
 import {AuthService} from './services/auth.service';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {BaseRequestOptions, HttpModule} from '@angular/http';
+import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
 
 import {AppComponent} from './app.component';
@@ -17,20 +15,27 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {NoAccessComponent} from './no-access/no-access.component';
 import {AuthGuard} from './services/auth-guard.service';
 import {AdminAuthGuard} from './services/admin-auth-guard.service';
-import {AuthHttp, AuthModule, provideAuth} from 'angular2-jwt';
+import {AuthConfigConsts, AuthHttp, JwtHelper, provideAuth} from 'angular2-jwt';
+import {HttpClientModule} from '@angular/common/http';
+import {FileUploadComponent} from './file-upload/file-upload.component';
+import {AlertModule} from 'ngx-bootstrap';
+import {FileUploadModule} from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
     AppComponent,
+    FileUploadComponent,
     LoginComponent,
     SignupComponent,
     AdminComponent,
     HomeComponent,
     NotFoundComponent,
-    NoAccessComponent
+    NoAccessComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot([
@@ -38,7 +43,9 @@ import {AuthHttp, AuthModule, provideAuth} from 'angular2-jwt';
       {path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'login', component: LoginComponent},
       {path: 'no-access', component: NoAccessComponent}
-    ])
+    ]),
+    AlertModule.forRoot(),
+    FileUploadModule,
   ],
   providers: [
     OrderService,
@@ -48,18 +55,19 @@ import {AuthHttp, AuthModule, provideAuth} from 'angular2-jwt';
     AdminAuthGuard,
     AuthHttp,
     provideAuth({
-      headerName: 'Authorization',
-      headerPrefix: 'Bearer',
-      tokenName: 'token',
-      tokenGetter: (() => localStorage.getItem('token')),
-      globalHeaders: [{ 'Content-Type': 'application/json' }],
+      headerName: AuthConfigConsts.DEFAULT_HEADER_NAME,
+      headerPrefix: AuthConfigConsts.HEADER_PREFIX_BEARER,
+      tokenName: AuthConfigConsts.DEFAULT_TOKEN_NAME,
+      tokenGetter: (() => localStorage.getItem(AuthConfigConsts.DEFAULT_TOKEN_NAME)),
+      globalHeaders: [{'Content-Type': 'application/json'}],
       noJwtError: true
     }),
+    JwtHelper,
 
     // For creating a mock back-end. You don't need these in a real app.
-    fakeBackendProvider,
-    MockBackend,
-    BaseRequestOptions
+    // fakeBackendProvider,
+    // MockBackend,
+    // BaseRequestOptions
   ],
   bootstrap: [AppComponent]
 })

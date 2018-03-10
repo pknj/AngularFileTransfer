@@ -1,7 +1,6 @@
-
 <h1>File transfer</h1>
 <p *ngIf="authService.isLoggedIn()">
-  Witaj {{  authService.currentUser.name }}
+  Witaj {{ authService.currentUser.name }}
 </p>
 <p *ngIf="authService.isLoggedIn() && !authService.currentUser.admin">
   Żeby móc ładować pliki musisz posiadać uprawnienia administratora.
@@ -10,4 +9,5 @@
   <li *ngIf="authService.isLoggedIn() && authService.currentUser.admin"><a routerLink="/admin">Wyślij plik</a></li>
   <li *ngIf="!authService.isLoggedIn()"><a routerLink="/login">Login</a></li>
   <li *ngIf="authService.isLoggedIn()"><a (click)="authService.logout()">Logout</a></li>
+  <li><a routerLink="/makieta">Makieta</a></li>
 </ul>

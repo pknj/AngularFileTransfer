@@ -1,14 +1,18 @@
 import {AuthService} from './../services/auth.service';
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'login',
+  selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   invalidLogin: boolean;
+
+  ngOnInit(): void {
+    this.authService.logout();
+  }
 
   constructor(
     private router: Router,
